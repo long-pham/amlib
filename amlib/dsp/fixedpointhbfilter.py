@@ -28,7 +28,7 @@ class FixedPointHBFilter(Elaboratable):
         # use remez now for the transition band
         # taps = signal.firwin(filter_order, 0.5)
         bands = np.array([0.0, 0.22, 0.28, 0.5])
-        taps = signal.remez(filter_order, bands, [1, 0], [1, 1])
+        taps = signal.remez(filter_order, bands, [1, 0], weight=[1, 1])
 
         # convert to fixed point representation
         self.bitwidth = bitwidth
