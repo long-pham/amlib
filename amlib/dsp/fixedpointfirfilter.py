@@ -36,7 +36,7 @@ class FixedPointFIRFilter(Elaboratable):
             bands = np.array([0., Fpb/Fs, Fsb/Fs, .5])
             pass_zero = filter_type == True or filter_type == 'lowpass'
             desired = [1, 0] if pass_zero else [0, 1]
-            taps = signal.remez(filter_order, bands, desired, weight)
+            taps = signal.remez(filter_order, bands, desired, weight=weight)
         else:
             raise TypeError('cutoff_freq parameter must be int or list of start/stop band frequencies')
         # convert to fixed point representation
